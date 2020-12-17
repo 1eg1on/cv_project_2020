@@ -6,6 +6,8 @@ NB the overall record of f1-score on Kaggle seems to be gained by a quite comple
 
 # A short brief of what happens in the scripts
 
+## Preprocessing
+
 The first problem, we ran into was the number of badly-posed images, such as black and white squares, photos of heads from such angles, that the emotion can't be distinguished even by human brain and so on.
 
 We performed thresholding, based on the sum of intensities histogram (cut off the almost black and almost white samples).
@@ -35,7 +37,7 @@ Each image from the vectorized testset we project, using the properties of colum
 We now want to use these features as an input for the classification problem.
 
 
-Model 1. Naive approach, based on 1NN cosine similarity.
+## Model 1. Naive approach, based on 1NN cosine similarity.
 
 We project the test image onto the span of columns of U and find the closest in terms of cosine similarity train image (coefficients vector used as features),
 so the amount of features used may be changed by changing the rank-reducing R.
@@ -45,12 +47,12 @@ We need to perform the compreddion for the sake of robustness, avoiding the over
 The predicted label for the test image is considered to be the same as the label of the closest training one
 
 
-Model 2. Stronger classifier, same features.
+## Model 2. Stronger classifier, same features.
 
 If we train somewhat of a strong model, e.g. gradient boosting on the same features, the results i,prove rapidly. We used out-of-box LgbmClassifier, but we are sure that some improvements may be gained by tuning the hyperparameters.
 
 
-Model 3. + bonus part and out-of-dataset-testing.
+## Model 3. + bonus part and out-of-dataset-testing.
 
 We reimplied the CNN, we found in Kaggle Kernels, they all looked quite the same from the prospect of their architecture and trained it. We also wrote a script, taking a shot using the computers front camera, preprocessing the image in the way to fit the FER2013 dataset input and outputting prediction of the current emotion into the .txt file. The whole process takes around 2.3 seconds, one may play around with it, it is fun, at least for a couple of minutes.
 
