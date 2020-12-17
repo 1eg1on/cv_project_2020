@@ -4,6 +4,14 @@ The main idea with this repository is to play around with FER 2013 dataset.
 
 NB the overall record of f1-score on Kaggle seems to be gained by a quite complex and heavy neural net, which we simplified and trained using Colab GPU's for the bonus part (in the end).
 
+# Important info for reproducing the results
+
+1. FER dataset on kaggle is not only available, so I used the locally saved version, tar.gz is available for public download from Google Disc, text file with link in the main folder.
+
+2. .h5 file with pre-trained model is on the same disc, the corresponding file should be placed in the bonus folder for the scripts to work
+
+3. The first script to run is the .ipynb eigenfaces in the main folder, as it unpacks the tar archieve into csv, used in further scripts.
+
 # A short brief of what happens in the scripts
 
 ## Preprocessing
